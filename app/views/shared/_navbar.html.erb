@@ -10,14 +10,16 @@
       <a class="navbar-brand" href="#">PPDP-JABAR</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
         <% if (!user_signed_in?)%>
             <li><% link_to "Login", new_user_session_path %></li>
             <li><% link_to "Sign Up", new_user_registration_path %></li>
           <% else %>
-          //TODO dropdown tidak muncul
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                  role="button" aria-haspopup="true" aria-expanded="false">
+                  <%= current_user.email %> <span class="caret"></span>
+              </a>
               <ul class="dropdown-menu">
                 <li><a href="#">Manage Listings</a></li>
                 <li><a href="#">List Your Space</a></li>
@@ -25,8 +27,8 @@
                 <li><a href="#">Your Trips</a></li>
                 <li role="separator" class="divider"></li>
 
-                <li><%= link_to "Edit Profile", edit_user_regitration_path %>></li>
-                <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %>></li>
+                <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
               </ul>
             </li>
           <% end %>
